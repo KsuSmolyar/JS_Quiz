@@ -1,5 +1,6 @@
 {
   "name": "js_quiz",
+  "homepage": "https://ksusmolyar.github.io/JS_Quiz",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
