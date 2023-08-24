@@ -1,0 +1,18 @@
+:root {
+  --pink: #ed8799;
+  --white: #fff;
+  --gray: rgb(99 92 92);
+  --light-gray: rgb(145, 136, 136);
+  --dark-gray: #282c34;
+  --light-green: rgb(95 161 98);
+  --green: rgb(60 140 63);
+  --blue: #61dafb;
+  --fz-l: calc(8px + 2vmin);
+  --fz-standard: calc(7px + 2vmin);
+  --fz-s: calc(6px + 2vmin);
+  --fz-xs: calc(3px + 2vmin);
+  --fz-xxs: 2vmin;
+  --mw-standard: 1600px;
+  --border-radius: 20px;
+  --width-s: 92%;
+}

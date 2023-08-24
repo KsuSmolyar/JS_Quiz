@@ -1,0 +1,41 @@
+.button {
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: fit-content;
+  font-size: var(--fz-xs);
+  transition: transform 200ms;
+}
+
+.button:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.primary {
+  background-color: var(--gray);
+  transition: transform 200ms;
+}
+
+.primary:hover {
+  background-color: var(--light-gray);
+}
+
+.primary:active {
+  transform: scale(1.03);
+  transition: transform 200ms;
+  background-color: var(--light-gray);
+}
+
+.secondary {
+  background-color: var(--light-green);
+  transition: transform 200ms;
+}
+
+.secondary:hover, .secondary:active {
+  background-color: var(--green);
+}
+
+.secondary:active {
+  transform: scale(1.03);
+  transition: transform 200ms;
+}

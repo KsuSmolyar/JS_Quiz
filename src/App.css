@@ -1,0 +1,11 @@
+.App {
+  background-color: var(--dark-gray);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--fz-standard);
+  color: var(--white);
+}
+
+

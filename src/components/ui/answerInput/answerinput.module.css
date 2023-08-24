@@ -1,0 +1,21 @@
+.answerInputContainer {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+input.answerInput[type="radio"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.answerInput:disabled {
+  pointer-events: none;
+  
+}
+
+.answerInputLabel {
+  font-size: var(--fz-s);
+  line-height: 1.3;
+}
