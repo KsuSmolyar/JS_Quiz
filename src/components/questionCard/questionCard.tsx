@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { AnswerInput } from '../ui/answerInput';
-import { Button } from '../ui/button';
+import { ButtonOrLink } from '../ui/button';
 import styles from './questioncard.module.css';
 import { AnswerOption } from '../../questions/types';
 
@@ -47,11 +47,11 @@ export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackTex
             <AnswerInput key={item.id} id={item.id} name={item.name} value={item.value} text={item.text} onChecked={onCheckedHandler} disabled={disabledRadio}/>
           ))}
         </div>
-        <Button onClick={onOpenHandler} className={styles.answerButton} text="Ответить" disabled={disabled}/>
+        <ButtonOrLink onClick={onOpenHandler} className={styles.answerButton} text="Ответить" disabled={disabled}/>
       </div>
     {show && <div className={styles.feedbackBlock}>
       <p className={styles.feedbackTitle}>{showFeedback ? 'Ответ неверный!' : 'Ответ верный!'}</p>
-      <Button type="submit" className={styles.nextButton} text="Следующий вопрос" variant="secondary"/>
+      <ButtonOrLink type="submit" className={styles.nextButton} text="Следующий вопрос" variant="secondary"/>
       {showFeedback && <p className={styles.feedbackText}> {feedbackText}</p>}
 
     </div>}
