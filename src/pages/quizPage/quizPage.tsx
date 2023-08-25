@@ -1,11 +1,11 @@
-import { QuestionCard } from '../questionCard';
-import styles from './main.module.css';
+import styles from './quizpage.module.css';
 import { useCallback, useMemo, useState } from 'react';
-import { Conclusion } from '../conclusion';
-import { ProgressBar } from '../progressBar';
 import { questionCards_1 } from '../../questions/section_1';
+import { ProgressBar } from '../../components/progressBar';
+import { QuestionCard } from '../../components/questionCard';
+import { Conclusion } from '../../components/conclusion';
 
-export const Main = () => {
+export const QuizPage = () => {
   const maxPoint = questionCards_1.length;
   const onePercent = maxPoint / 100;
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,7 +43,7 @@ export const Main = () => {
  }
 
   return (
-    <div className={styles.main}>
+    <div className={styles.quiz}>
       <p className={styles.title}>1. Основы JavaScript</p>
       <ProgressBar solvedTasks={currentIndex < questionCards_1.length - 1 ? currentIndex : maxPoint} totalTasks={maxPoint}/>
       { currentIndex !== -1 && <QuestionCard question={questionCardData.questionText} arr={questionCardData.answerOptions} onNextClick={onNextIndex} feedbackText={questionCardData.feedbackText} counterHandler={onCounter}/>}

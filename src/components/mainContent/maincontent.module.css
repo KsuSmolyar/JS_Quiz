@@ -1,0 +1,9 @@
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+  width: var(--width-s);
+  max-width: var(--mw-standard);
+  margin-top: 30px;
+}
+

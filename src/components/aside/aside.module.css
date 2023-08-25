@@ -1,0 +1,10 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--white);
+  padding: 14px;
+  border-radius: var(--border-radius);
+  font-size: var(--fz-xxs);
+}
+
