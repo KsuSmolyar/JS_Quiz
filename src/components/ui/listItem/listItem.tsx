@@ -5,6 +5,6 @@ interface IListItem {
 }
 export const ListItem = ({text}: IListItem) => {
   return (
-    <li className={styles.listItem}><a href="#">{text}</a></li>
+    <li className={styles.listItem}>{text}</li>
   )
 }
