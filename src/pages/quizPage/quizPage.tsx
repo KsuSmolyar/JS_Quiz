@@ -38,7 +38,7 @@ export const QuizPage = () => {
       }
       return -1;      
     });
-  }, [])
+  }, [maxPoint])
 
   useEffect(() => {
     setCurrentIndex(0)
