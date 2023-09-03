@@ -12,8 +12,9 @@ interface IQuestionCard {
   onNextClick: () => void
   feedbackText: string;
   counterHandler: (value: number) => void;
+  onProgressHandler: () => void;
 }
-export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackText, counterHandler}: IQuestionCard) => {
+export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackText, counterHandler, onProgressHandler}: IQuestionCard) => {
   const [show, setShow] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [disabled, setDisabled] = useState(true);
@@ -21,6 +22,7 @@ export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackTex
   const onOpenHandler = () => {
     setShow(true);
     setDisabled(true);
+    onProgressHandler();
   }
 
   const onNextClickHandler = (event: React.FormEvent<HTMLFormElement>) => {

@@ -20,6 +20,7 @@ export const QuizPage = () => {
   const onePercent = maxPoint / 100;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [counter, setCounter] = useState(0);
+  const [progress, setProgress] = useState(0);
   let conclusionText = '';
   const result = Math.round(counter / onePercent);
 
@@ -29,6 +30,10 @@ export const QuizPage = () => {
 
   const onCounter = (value: number) => {
     setCounter((prev) => prev + value);
+  }
+
+  const onProgress = () => {
+    setProgress((prev) => prev + 1);
   }
 
   const onNextIndex = useCallback(() => {
@@ -42,6 +47,7 @@ export const QuizPage = () => {
 
   useEffect(() => {
     setCurrentIndex(0)
+    setProgress(0)
   }, [theme])
 
  if(result >= 90) {
@@ -59,8 +65,8 @@ export const QuizPage = () => {
   return (
     <div className={styles.quiz}>
       <p className={styles.title}>{currentTheme.title}</p>
-      <ProgressBar solvedTasks={currentIndex < maxPoint - 1 ? currentIndex : maxPoint} totalTasks={maxPoint}/>
-      { currentIndex !== -1 && <QuestionCard question={questionCardData.questionText} arr={questionCardData.answerOptions} onNextClick={onNextIndex} feedbackText={questionCardData.feedbackText} counterHandler={onCounter}/>}
+      <ProgressBar solvedTasks={progress} totalTasks={maxPoint}/>
+      { currentIndex !== -1 && <QuestionCard question={questionCardData.questionText} arr={questionCardData.answerOptions} onNextClick={onNextIndex} feedbackText={questionCardData.feedbackText} counterHandler={onCounter} onProgressHandler={onProgress}/>}
       { currentIndex === -1 && <Conclusion nextTheme={nextTheme} conclusionText={conclusionText} point={counter} maxPoint={maxPoint}/>}
     </div>
   )
