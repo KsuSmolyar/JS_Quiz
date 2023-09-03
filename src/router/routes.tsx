@@ -3,6 +3,7 @@ import { paths } from "./paths";
 import App from "../App";
 import { MainPage } from "../pages/mainPage/mainPage";
 import { QuizPage } from "../pages/quizPage/quizPage";
+import ErrorPage from "../pages/errorPage";
 
 
 export const routes: RouteObject[] = [
@@ -17,11 +18,12 @@ export const routes: RouteObject[] = [
 			{
 				path: paths.quiz,
 				element: <QuizPage />,
+				
 			},
 		],
 	},
-	// {
-	// 	path: paths.admin,
-	// 	element: <AdminPage />,
-	// },
+	{
+		path: '*',
+		element: <ErrorPage />
+	}
 ];

@@ -1,1 +1,0 @@
-export { Quiz } from './quiz';

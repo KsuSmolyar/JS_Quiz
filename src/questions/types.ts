@@ -10,3 +10,10 @@ export type AnswerOption = {
   value: "1" | "0",
   text: string,
 }
+
+export type QuizThemes = {
+  [key: string]: {
+    title: string,
+    data: QuestionCard[]
+  }
+}
