@@ -40,6 +40,7 @@
   display: grid;
   grid-template-columns: 70% 30%;
   grid-template-rows: 60px 1fr;
+  row-gap: 20px;
 }
 
 .feedbackTitle, .feedbackText {
@@ -47,6 +48,9 @@
 }
 
 .feedbackTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   grid-column: 1/2;
   grid-row: 1/2;
 }
@@ -56,11 +60,27 @@
   grid-column: 2/3;
   grid-row: 1/2;
   justify-self: end;
-  align-self: baseline;
+  align-self: center;
+}
+
+.nextButton::after {
+  content: '';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../../public/arrow_next.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
 }
 
 .feedbackText {
-  line-height: 1.3;
+  line-height: 1.6;
   grid-column: 1/3;
   grid-row: 2/3;
+}
+
+.feedbackIcon {
+  width: 40px;
 }

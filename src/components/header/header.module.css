@@ -9,4 +9,13 @@
 
 .headerTitle {
   text-transform: uppercase;
+  transition: transform 300ms ease;
+}
+
+.headerTitle:hover {
+  transform: scale(1.05);
+}
+
+.headerLink {
+  color: var(--white);
 }

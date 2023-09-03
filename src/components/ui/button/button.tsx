@@ -4,7 +4,7 @@ import React, { ButtonHTMLAttributes, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  text: string;
+  text?: string;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   className?: string;
   variant?: 'primary' | 'secondary';

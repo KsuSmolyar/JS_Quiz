@@ -1,7 +1,9 @@
 .listItem {
   transition: transform 200ms ease-out;
+  margin-left: 20px;
 }
 
 .listItem:hover {
   transform: scale(1.03);
 }
+

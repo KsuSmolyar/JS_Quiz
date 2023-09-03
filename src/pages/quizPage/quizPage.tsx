@@ -1,12 +1,22 @@
 import styles from './quizpage.module.css';
-import { useCallback, useMemo, useState } from 'react';
-import { questionCards_1 } from '../../questions/section_1';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ProgressBar } from '../../components/progressBar';
 import { QuestionCard } from '../../components/questionCard';
 import { Conclusion } from '../../components/conclusion';
+import { useParams } from 'react-router-dom';
+import { DEFAULT_THEME, quizThemes } from '../../questions/quizThemes';
 
+const themeKeys = Object.keys(quizThemes);
+console.log(themeKeys);
 export const QuizPage = () => {
-  const maxPoint = questionCards_1.length;
+  const { theme } = useParams<{theme: string}>();
+  const currentThemeKey = theme ? theme : DEFAULT_THEME;
+  const currentTheme = quizThemes[currentThemeKey];
+  const currentThemeInd = themeKeys.indexOf(currentThemeKey);
+  const lastTheme = themeKeys.length - 1;
+  const nextTheme = themeKeys[currentThemeInd < lastTheme ? currentThemeInd + 1 : lastTheme];
+  
+  const maxPoint = currentTheme.data.length;
   const onePercent = maxPoint / 100;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [counter, setCounter] = useState(0);
@@ -14,8 +24,8 @@ export const QuizPage = () => {
   const result = Math.round(counter / onePercent);
 
   const questionCardData = useMemo(() => {
-    return questionCards_1[currentIndex];
-  }, [currentIndex]);
+    return currentTheme.data[currentIndex];
+  }, [currentIndex, currentTheme]);
 
   const onCounter = (value: number) => {
     setCounter((prev) => prev + value);
@@ -23,12 +33,16 @@ export const QuizPage = () => {
 
   const onNextIndex = useCallback(() => {
     setCurrentIndex((prev)=> {
-      if(prev < questionCards_1.length - 1) {
+      if(prev < maxPoint - 1) {
         return prev + 1
       }
       return -1;      
     });
   }, [])
+
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [theme])
 
  if(result >= 90) {
   conclusionText = ' Вы отлично разбираетесь в теме'
@@ -44,10 +58,10 @@ export const QuizPage = () => {
 
   return (
     <div className={styles.quiz}>
-      <p className={styles.title}>1. Основы JavaScript</p>
-      <ProgressBar solvedTasks={currentIndex < questionCards_1.length - 1 ? currentIndex : maxPoint} totalTasks={maxPoint}/>
+      <p className={styles.title}>{currentTheme.title}</p>
+      <ProgressBar solvedTasks={currentIndex < maxPoint - 1 ? currentIndex : maxPoint} totalTasks={maxPoint}/>
       { currentIndex !== -1 && <QuestionCard question={questionCardData.questionText} arr={questionCardData.answerOptions} onNextClick={onNextIndex} feedbackText={questionCardData.feedbackText} counterHandler={onCounter}/>}
-      { currentIndex === -1 && <Conclusion conclusionText={conclusionText} point={counter} maxPoint={maxPoint}/>}
+      { currentIndex === -1 && <Conclusion nextTheme={nextTheme} conclusionText={conclusionText} point={counter} maxPoint={maxPoint}/>}
     </div>
   )
 }
