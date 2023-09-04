@@ -13,8 +13,10 @@ interface IQuestionCard {
   feedbackText: string;
   counterHandler: (value: number) => void;
   onProgressHandler: () => void;
+  onLocalStorageSave: () => void;
+  index: number;
 }
-export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackText, counterHandler, onProgressHandler}: IQuestionCard) => {
+export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackText, counterHandler, onProgressHandler, onLocalStorageSave, index}: IQuestionCard) => {
   const [show, setShow] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [disabled, setDisabled] = useState(true);
@@ -23,6 +25,7 @@ export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackTex
     setShow(true);
     setDisabled(true);
     onProgressHandler();
+    onLocalStorageSave();
   }
 
   const onNextClickHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -42,7 +45,10 @@ export const QuestionCard = React.memo(({question, arr, onNextClick, feedbackTex
   return (
     <form ref ={formRef} className={styles.container} onSubmit={onNextClickHandler}>
       {!show && <div className={styles.questionCard}>
-        <p className={styles.questionCardText}>{question}</p>
+        <div className={styles.questionCardInnerContainer}>
+          <span className={styles.questionCardNumber}>{index}</span>
+          <p className={styles.questionCardText}>{question}</p>
+        </div>
         <div className={styles.answerOption}>
           {arr.map((item) => (
             <AnswerInput key={item.id} id={item.id} name={item.name} value={item.value} text={item.text} onChecked={onCheckedHandler}/>
